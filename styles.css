@@ -1,6 +1,46 @@
+/* outfit-300 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./assets/fonts/outfit-v15-latin-300.woff2') format('woff2');
+}
 
+/* outfit-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/outfit-v15-latin-regular.woff2') format('woff2');
+}
+
+/* outfit-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./assets/fonts/outfit-v15-latin-600.woff2') format('woff2');
+}
+
+:root {
+    /* Colors */
+    --blue-500: hsl(215, 51%, 70%);
+    --cyan-400: hsl(178, 100%, 50%);
+    --blue-950: hsl(217, 54%, 11%);
+    --blue-900: hsl(216, 50%, 16%);
+    --blue-800: hsl(215, 32%, 27%);
+    --white: hsl(0, 0%, 100%);
+}
 
 body {
+    /* Will remove later */
     background-image: url('./reference/desktop-design.jpg');
     background-repeat: no-repeat;
+    background-position: top center;
+
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
 }
