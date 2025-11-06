@@ -1,46 +1,244 @@
 /* outfit-300 - latin */
 @font-face {
-  font-display: swap;
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 300;
-  src: url('./assets/fonts/outfit-v15-latin-300.woff2') format('woff2');
+    font-display: swap;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./assets/fonts/outfit-v15-latin-300.woff2') format('woff2');
 }
 
 /* outfit-regular - latin */
 @font-face {
-  font-display: swap;
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./assets/fonts/outfit-v15-latin-regular.woff2') format('woff2');
+    font-display: swap;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/outfit-v15-latin-regular.woff2') format('woff2');
 }
 
 /* outfit-600 - latin */
 @font-face {
-  font-display: swap;
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 600;
-  src: url('./assets/fonts/outfit-v15-latin-600.woff2') format('woff2');
+    font-display: swap;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/fonts/outfit-v15-latin-600.woff2') format('woff2');
 }
 
 :root {
     /* Colors */
     --blue-500: hsl(215, 51%, 70%);
     --cyan-400: hsl(178, 100%, 50%);
+    --cyan-overlay: hsla(178, 100%, 50%, 0.5);
     --blue-950: hsl(217, 54%, 11%);
+    --shadow-light: hsla(217, 54%, 10%, 0.4);
+    --shadow-deep: hsla(217, 54%, 10%, 0.6);
     --blue-900: hsl(216, 50%, 16%);
     --blue-800: hsl(215, 32%, 27%);
     --white: hsl(0, 0%, 100%);
+
+    /* Font */
+    --font-primary: 'Outfit', sans-serif;
+    --fw-300: 300;
+    --fw-400: 400;
+    --fw-600: 600;
+    --fs-16: 1rem;
+    --fs-18: 1.125rem;
+    --fs-22: 1.375rem;
+
+    /* Spacing */
+    --s-8: 0.5rem;
+    --s-16: 1rem;
+    --s-20: 1.25rem;
+    --s-22: 1.375rem;
+    --s-24: 1.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    /* Will remove later */
+    font-family: var(--font-primary);
+    font-weight: var(--fw-300);
+    font-size: var(--fs-18);
+
+    background-color: var(--blue-950);
+    color: var(--blue-500);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Reference image */
+/* body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-image: url('./reference/desktop-design.jpg');
     background-repeat: no-repeat;
-    background-position: top center;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 1;
+} */
 
-    font-family: 'Outfit', sans-serif;
-    font-size: 18px;
+main {
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    margin-inline: var(--s-24);
+}
+
+.card {
+    max-width: 350px;
+    width: 100%;
+    padding: var(--s-24);
+    border-radius: 12px;
+    background-color: var(--blue-900);
+
+    box-shadow:
+    0px 32px 0px 20px var(--shadow-deep),
+    0px 28px 0px 52px var(--shadow-light);
+}
+
+.card-image {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin-block-end: var(--s-16);
+}
+
+.card-image img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url(./assets/images/icon-view.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--cyan-overlay);
+  opacity: 0;
+  transition: .3s ease-in-out;
+  border-radius: 8px;
+}
+
+.card-image:hover::after {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.card-header {
+    margin-block-end: var(--s-22);
+}
+
+.card-title {
+    font-size: var(--fs-22);
+    font-weight: var(--fw-600);
+    color: var(--white);
+    margin-block-end: var(--s-16);
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        color: var(--cyan-400);
+    }
+}
+
+.card-content {
+    line-height: 1.5;
+}
+
+.card-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: var(--s-24);
+}
+
+.card-price {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-16);
+    font-weight: var(--fw-600);
+    color: var(--cyan-400);
+    letter-spacing: 0.2px;
+}
+
+.card-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-16);
+    font-weight: var(--fw-400);
+    letter-spacing: 0.2px;
+}
+
+.card-footer {
+    display: flex;
+    gap: 18px;
+    font-size: var(--fs-16);
+    align-items: center;
+    border-block-start: 1px solid var(--blue-800);
+    padding-block: var(--s-16) var(--s-8);
+}
+
+.card-avatar {
+    border: 1px solid var(--white);
+    border-radius: 50%;
+}
+
+.card-author span {
+    font-weight: var(--fw-600);
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        color: var(--cyan-400);
+    }
+}
+
+.attribution {
+    margin-bottom: -12rem;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--cyan-400);
+    }
+
+    a::after {
+        content: '';
+        width: 0px;
+        height: 1px;
+        display: block;
+        background: var(--cyan-400);
+        transition: .3s ease-in-out;
+    }
+
+    a:hover::after {
+        width: 100%;
+    }
+}
+
+/* https://www.joshwcomeau.com/snippets/react-components/visually-hidden/ */
+.visually-hidden:not(:focus):not(:active) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0); /* Legacy property for Internet Explorer */
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
