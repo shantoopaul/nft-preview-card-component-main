@@ -217,7 +217,10 @@ main {
 
 .attribution {
     margin-bottom: -12rem;
-
+    
+    /* Style reference link */
+    /* https://stackoverflow.com/questions/30352431/css-transition-not-working-with-underline */
+    
     a {
         color: var(--cyan-400);
     }
